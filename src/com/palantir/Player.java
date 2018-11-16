@@ -16,6 +16,9 @@ public class Player implements Comparable<Player> {
     private int numberOfWins;
     private double seasonScore;
 
+    private final int initialWins;
+    private final double initialScore;
+
     public double executeGame() {
         return distribution.generateScore();
     }
@@ -51,6 +54,8 @@ public class Player implements Comparable<Player> {
         this.distribution = distribution;
         this.numberOfWins = numberOfWins;
         this.seasonScore = seasonScore;
+        this.initialScore = seasonScore;
+        this.initialWins = numberOfWins;
     }
 
     public static Player generatePlayer(String name, int numberOfWins, double seasonScore, double standardDeviation) {
@@ -69,5 +74,10 @@ public class Player implements Comparable<Player> {
         return (Comparator.<Player>comparingInt(p -> p.numberOfWins))
                 .thenComparingDouble(p -> p.seasonScore)
                 .compare(this, o);
+    }
+
+    public void reset() {
+        this.numberOfWins = initialWins;
+        this.seasonScore = initialScore;
     }
 }

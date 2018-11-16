@@ -3,11 +3,12 @@ package com.palantir;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Main {
+
+    private static final int NUMBER_OF_EXECUTIONS = 10;
 
     public static void main(String[] args) {
         Player kellen = Player.generatePlayer("Kellen", 8, 1291, 19.96 );
@@ -36,6 +37,13 @@ public class Main {
 
         List<Week> weeks = ImmutableList.of(week11, week12);
 
+        for (int i = 0; i < NUMBER_OF_EXECUTIONS; i++) {
+            executeSeason(players, weeks);
+        }
+
+    }
+
+    private static void executeSeason(List<Player> players, List<Week> weeks) {
         for (Week w : weeks) {
             w.executeWeek();
 
@@ -47,8 +55,9 @@ public class Main {
                 System.out.println(p);
             }
             System.out.println();
-        }
 
+            players.forEach(Player::reset);
+        }
     }
 
     static class Tuple {
