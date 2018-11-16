@@ -1,0 +1,1 @@
+This repo simulates the result of the rest of the fantasy football season. It does so by running 10,000 simulations of each remaining game, assuming players score in a normal distribution. To run the simulation just execute the main method of the Main class.
