@@ -67,24 +67,25 @@ public class Main {
     }
 
     private static void executeSeason(List<Player> players, List<Week> weeks, Map<Player, Integer> timesInPlayoff) {
-        for (Week w : weeks) {
-            w.executeWeek();
+        weeks.forEach(Week::executeWeek);
 
-            Collections.sort(players);
-            Collections.reverse(players);
+        Collections.sort(players);
+        Collections.reverse(players);
 
-            /*
-            System.out.println("Standings:");
-            for (Player p : players) {
-                System.out.println(p);
-            }
-            System.out.println();
-            */
-        }
+        //printStandings();
+
         for (int i = 0; i < PLAYOFF_SPOTS; i++) {
             timesInPlayoff.merge(players.get(i), 1, Integer::sum);
         }
 
         players.forEach(Player::reset);
+    }
+
+    private static void printStandings(List<Player> players) {
+        System.out.println("Standings:");
+        for (Player p : players) {
+            System.out.println(p);
+        }
+        System.out.println();
     }
 }
