@@ -20,13 +20,35 @@ public class Main {
         Player sam = Player.generatePlayer("Sam", 2, 1143, 24.48 );
         List<Player> players = Lists.newArrayList(riley, kellen, kyle, jordan, alex, tom, ellen, sam);
 
+        Week week11 = new Week("Week 11", ImmutableList.of(
+                new Matchup(kellen, jordan),
+                new Matchup(sam, alex),
+                new Matchup(riley, ellen),
+                new Matchup(tom, kyle)
+        ));
 
-        Collections.sort(players);
-        Collections.reverse(players);
+        Week week12 = new Week("Week 12", ImmutableList.of(
+                new Matchup(kellen, kyle),
+                new Matchup(sam, jordan),
+                new Matchup(riley, alex),
+                new Matchup(tom, ellen)
+        ));
 
-        for (Player p : players) {
-            System.out.println(p);
+        List<Week> weeks = ImmutableList.of(week11, week12);
+
+        for (Week w : weeks) {
+            w.executeWeek();
+
+            Collections.sort(players);
+            Collections.reverse(players);
+
+            System.out.println("Standings:");
+            for (Player p : players) {
+                System.out.println(p);
+            }
+            System.out.println();
         }
+
     }
 
     static class Tuple {

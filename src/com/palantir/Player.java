@@ -11,7 +11,7 @@ public class Player implements Comparable<Player> {
     private static final double NUMBER_OF_GAMES = 10;
     private static final Random RANDOM = new Random();
 
-    private String name;
+    public final String name;
     private Distribution distribution;
     private int numberOfWins;
     private double seasonScore;
