@@ -34,7 +34,7 @@ public class Matchup {
         String loserName = homeWon ? awayPlayer.name : homePlayer.name;
         double winnerScore = Math.max(homeScore, awayScore);
         double loserScore = Math.min(homeScore, awayScore);
-        System.out.println(String.format("%s beats %s - (%f - %f)", winnerName, loserName, winnerScore, loserScore));
+        //System.out.println(String.format("%s beats %s - (%f - %f)", winnerName, loserName, winnerScore, loserScore));
         homePlayer.recordResult(homeWon, homeScore);
         awayPlayer.recordResult(!homeWon, awayScore);
     }

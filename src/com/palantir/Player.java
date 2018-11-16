@@ -28,10 +28,15 @@ public class Player implements Comparable<Player> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Player player = (Player) o;
-        return numberOfWins == player.numberOfWins &&
-                Double.compare(player.seasonScore, seasonScore) == 0 &&
-                Objects.equals(name, player.name) &&
-                Objects.equals(distribution, player.distribution);
+        return initialWins == player.initialWins &&
+                Double.compare(player.initialScore, initialScore) == 0 &&
+                Objects.equals(name, player.name);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(name, initialWins, initialScore);
     }
 
     @Override
@@ -41,11 +46,6 @@ public class Player implements Comparable<Player> {
                 ", numberOfWins=" + numberOfWins +
                 ", seasonScore=" + seasonScore +
                 '}';
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, distribution, numberOfWins, seasonScore);
     }
 
     public Player(String name, Distribution distribution, int numberOfWins, double seasonScore) {

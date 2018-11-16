@@ -36,9 +36,9 @@ public class Week {
     private List<Matchup> matchups;
 
     public void executeWeek() {
-        System.out.println("Starting " + name + ":");
+        //System.out.println("Starting " + name + ":");
         matchups.forEach(Matchup::executeMatchup);
-        System.out.println();
+        //System.out.println();
     }
 
 }
