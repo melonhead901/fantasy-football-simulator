@@ -3,8 +3,8 @@ package com.palantir;
 import java.util.Objects;
 
 public class Matchup {
-    private Player homePlayer;
-    private Player awayPlayer;
+    private final Player homePlayer;
+    private final Player awayPlayer;
 
     public Matchup(Player homePlayer, Player awayPlayer) {
         this.homePlayer = homePlayer;
@@ -29,14 +29,16 @@ public class Matchup {
         double homeScore = homePlayer.executeGame();
         double awayScore = awayPlayer.executeGame();
         boolean homeWon = homeScore > awayScore;
-        /*
+        //printWeekResult(homeScore, awayScore, homeWon);
+        homePlayer.recordResult(homeWon, homeScore);
+        awayPlayer.recordResult(!homeWon, awayScore);
+    }
+
+    private void printWeekResult(double homeScore, double awayScore, boolean homeWon) {
         String winnerName = homeWon ? homePlayer.name : awayPlayer.name;
         String loserName = homeWon ? awayPlayer.name : homePlayer.name;
         double winnerScore = Math.max(homeScore, awayScore);
         double loserScore = Math.min(homeScore, awayScore);
         System.out.println(String.format("%s beats %s - (%f - %f)", winnerName, loserName, winnerScore, loserScore));
-        */
-        homePlayer.recordResult(homeWon, homeScore);
-        awayPlayer.recordResult(!homeWon, awayScore);
     }
 }

@@ -9,11 +9,11 @@ public class Player implements Comparable<Player> {
     private static final double NUMBER_OF_GAMES = 10;
     private static final Random RANDOM = new Random();
 
-    public final String name;
-    private Distribution distribution;
     private int numberOfWins;
     private double seasonScore;
 
+    public final String name;
+    private final Distribution distribution;
     private final int initialWins;
     private final double initialScore;
 
@@ -47,7 +47,6 @@ public class Player implements Comparable<Player> {
     }
 
     private Player(String name, Distribution distribution, int numberOfWins, double seasonScore) {
-
         this.name = name;
         this.distribution = distribution;
         this.numberOfWins = numberOfWins;
@@ -57,7 +56,8 @@ public class Player implements Comparable<Player> {
     }
 
     public static Player generatePlayer(String name, int numberOfWins, double seasonScore, double standardDeviation) {
-        return new Player(name, new Distribution(seasonScore / NUMBER_OF_GAMES, standardDeviation, RANDOM), numberOfWins, seasonScore);
+        return new Player(name, new Distribution(seasonScore / NUMBER_OF_GAMES, standardDeviation, RANDOM),
+                numberOfWins, seasonScore);
     }
 
     public void recordResult(boolean didWin, double score) {
