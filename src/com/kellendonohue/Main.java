@@ -1,4 +1,4 @@
-package com.palantir;
+package com.kellendonohue;
 
 import java.util.Collections;
 import java.util.HashMap;
