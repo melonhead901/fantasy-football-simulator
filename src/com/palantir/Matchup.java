@@ -22,7 +22,6 @@ public class Matchup {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(homePlayer, awayPlayer);
     }
 
@@ -30,11 +29,13 @@ public class Matchup {
         double homeScore = homePlayer.executeGame();
         double awayScore = awayPlayer.executeGame();
         boolean homeWon = homeScore > awayScore;
+        /*
         String winnerName = homeWon ? homePlayer.name : awayPlayer.name;
         String loserName = homeWon ? awayPlayer.name : homePlayer.name;
         double winnerScore = Math.max(homeScore, awayScore);
         double loserScore = Math.min(homeScore, awayScore);
-        //System.out.println(String.format("%s beats %s - (%f - %f)", winnerName, loserName, winnerScore, loserScore));
+        System.out.println(String.format("%s beats %s - (%f - %f)", winnerName, loserName, winnerScore, loserScore));
+        */
         homePlayer.recordResult(homeWon, homeScore);
         awayPlayer.recordResult(!homeWon, awayScore);
     }

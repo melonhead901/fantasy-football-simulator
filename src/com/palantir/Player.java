@@ -1,7 +1,5 @@
 package com.palantir;
 
-import com.google.common.collect.Comparators;
-
 import java.util.Comparator;
 import java.util.Objects;
 import java.util.Random;
@@ -48,7 +46,7 @@ public class Player implements Comparable<Player> {
                 '}';
     }
 
-    public Player(String name, Distribution distribution, int numberOfWins, double seasonScore) {
+    private Player(String name, Distribution distribution, int numberOfWins, double seasonScore) {
 
         this.name = name;
         this.distribution = distribution;

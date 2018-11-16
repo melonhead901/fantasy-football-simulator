@@ -1,6 +1,5 @@
 package com.palantir;
 
-import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,7 +17,6 @@ public class Week {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(name, matchups);
     }
 
@@ -26,11 +24,6 @@ public class Week {
 
         this.name = name;
         this.matchups = matchups;
-    }
-
-    public Week(String name) {
-
-        this.name = name;
     }
 
     private List<Matchup> matchups;

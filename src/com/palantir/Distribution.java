@@ -40,6 +40,6 @@ public class Distribution {
     }
 
     public double generateScore() {
-        return random.nextGaussian()*standardDeviation + average;
+        return random.nextGaussian() * standardDeviation + average;
     }
 }
