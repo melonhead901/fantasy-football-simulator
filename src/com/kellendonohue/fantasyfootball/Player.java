@@ -1,4 +1,4 @@
-package com.kellendonohue;
+package com.kellendonohue.fantasyfootball;
 
 import java.util.Comparator;
 import java.util.Objects;

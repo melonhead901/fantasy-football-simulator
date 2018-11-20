@@ -1,4 +1,4 @@
-package com.kellendonohue;
+package com.kellendonohue.fantasyfootball;
 
 import java.util.List;
 import java.util.Objects;

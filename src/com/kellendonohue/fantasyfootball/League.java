@@ -1,4 +1,4 @@
-package com.kellendonohue;
+package com.kellendonohue.fantasyfootball;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
