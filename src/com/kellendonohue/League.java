@@ -6,6 +6,11 @@ import com.google.common.collect.Lists;
 import java.util.List;
 
 class League {
+    /**
+     * Number of games played so far this season.
+     */
+    static final double NUMBER_OF_GAMES_PLAYED = 11;
+
     private final List<Player> players;
     private final List<Week> weeks;
 
@@ -23,22 +28,24 @@ class League {
     }
 
     public static League createLeague() {
-        Player kellen = Player.generatePlayer("Kellen", 8, 1291, 19.96);
-        Player riley = Player.generatePlayer("Riley", 8, 1245, 22.50);
-        Player kyle = Player.generatePlayer("Kyle", 6, 1111, 24.18);
-        Player jordan = Player.generatePlayer("Jordan", 5, 1069, 16.06);
-        Player alex = Player.generatePlayer("Alex", 4, 1087, 26.25);
-        Player tom = Player.generatePlayer("Tom", 4, 1084, 13.95);
-        Player ellen = Player.generatePlayer("Ellen", 3, 1000, 23.20);
-        Player sam = Player.generatePlayer("Sam", 2, 1143, 24.48);
+        Player kellen = Player.generatePlayer("Kellen", 9, 1401, 19.8);
+        Player riley = Player.generatePlayer("Riley", 9, 1420, 26.18);
+        Player kyle = Player.generatePlayer("Kyle", 7, 1228, 22.98);
+        Player jordan = Player.generatePlayer("Jordan", 5, 1161, 15.98);
+        Player alex = Player.generatePlayer("Alex", 5, 1223, 26.24);
+        Player tom = Player.generatePlayer("Tom", 4, 1192, 13.24);
+        Player ellen = Player.generatePlayer("Ellen", 2, 1260, 22.02);
+        Player sam = Player.generatePlayer("Sam", 3, 1115, 24.12);
         List<Player> players = Lists.newArrayList(riley, kellen, kyle, jordan, alex, tom, ellen, sam);
 
+        /* Commented our because week 11 happened, but left for replay
         Week week11 = new Week("Week 11", ImmutableList.of(
                 new Matchup(kellen, jordan),
                 new Matchup(sam, alex),
                 new Matchup(riley, ellen),
                 new Matchup(tom, kyle)
         ));
+        */
 
         Week week12 = new Week("Week 12", ImmutableList.of(
                 new Matchup(kellen, kyle),
@@ -61,7 +68,7 @@ class League {
                 new Matchup(ellen, alex)
         ));
 
-        List<Week> weeks= ImmutableList.of(week11, week12, week13, week14);
+        List<Week> weeks= ImmutableList.of(week12, week13, week14);
 
         return new League(players, weeks);
     }

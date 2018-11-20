@@ -6,7 +6,6 @@ import java.util.Random;
 
 public class Player implements Comparable<Player> {
 
-    private static final double NUMBER_OF_GAMES = 10;
     private static final Random RANDOM = new Random();
 
     private int numberOfWins;
@@ -33,7 +32,6 @@ public class Player implements Comparable<Player> {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(name, initialWins, initialScore);
     }
 
@@ -56,7 +54,7 @@ public class Player implements Comparable<Player> {
     }
 
     public static Player generatePlayer(String name, int numberOfWins, double seasonScore, double standardDeviation) {
-        return new Player(name, new Distribution(seasonScore / NUMBER_OF_GAMES, standardDeviation, RANDOM),
+        return new Player(name, new Distribution(seasonScore / League.NUMBER_OF_GAMES_PLAYED, standardDeviation, RANDOM),
                 numberOfWins, seasonScore);
     }
 
