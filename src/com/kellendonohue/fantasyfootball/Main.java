@@ -16,20 +16,21 @@ public class Main {
         List<Player> players = league.getPlayers();
         List<Week> weeks = league.getWeeks();
 
-        Map<Player, Integer> timesInPlayoff = new HashMap<>();
+        Map<Player, SeasonResult> timesInPlayoff = new HashMap<>();
+        players.forEach(p -> timesInPlayoff.put(p, new SeasonResult()));
 
         for (int i = 0; i < NUMBER_OF_EXECUTIONS; i++) {
             executeSeason(players, weeks, timesInPlayoff);
         }
 
-        for (Map.Entry<Player, Integer> e : timesInPlayoff.entrySet()) {
+        for (Map.Entry<Player, SeasonResult> e : timesInPlayoff.entrySet()) {
             System.out.println(String.format("%s has %.2f%% chance of making playoffs", e.getKey().name,
-                    e.getValue() * 100.0 / NUMBER_OF_EXECUTIONS));
+                    e.getValue().getTimesInPlayoff() * 100.0 / NUMBER_OF_EXECUTIONS));
         }
 
     }
 
-    private static void executeSeason(List<Player> players, List<Week> weeks, Map<Player, Integer> timesInPlayoff) {
+    private static void executeSeason(List<Player> players, List<Week> weeks, Map<Player, SeasonResult> timesInPlayoff) {
         weeks.forEach(Week::executeWeek);
 
         Collections.sort(players);
@@ -38,7 +39,7 @@ public class Main {
         //printStandings();
 
         for (int i = 0; i < PLAYOFF_SPOTS; i++) {
-            timesInPlayoff.merge(players.get(i), 1, Integer::sum);
+            timesInPlayoff.get(players.get(i)).incrementTimesInPlayoff();
         }
 
         players.forEach(Player::reset);
