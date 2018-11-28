@@ -24,10 +24,19 @@ public class Main {
         }
 
         for (Map.Entry<Player, SeasonResult> e : timesInPlayoff.entrySet()) {
-            System.out.println(String.format("%s has %.2f%% chance of making playoffs", e.getKey().name,
-                    e.getValue().getTimesInPlayoff() * 100.0 / NUMBER_OF_EXECUTIONS));
+            printSeasonResult(e.getKey(), e.getValue());
         }
 
+    }
+
+    private static void printSeasonResult(Player player, SeasonResult seasonResult) {
+        String outputString = "%s has %.2f%% chance of making playoffs";
+        if (seasonResult.getSupportersShield() > 0) {
+            outputString += ", %.2f%% chance of Supporters' Shield";
+        }
+        System.out.println(String.format(outputString, player.name,
+                seasonResult.getTimesInPlayoff() * 100.0 / NUMBER_OF_EXECUTIONS,
+                seasonResult.getSupportersShield() * 100.0 / NUMBER_OF_EXECUTIONS));
     }
 
     private static void executeSeason(List<Player> players, List<Week> weeks, Map<Player, SeasonResult> timesInPlayoff) {
@@ -37,6 +46,8 @@ public class Main {
         Collections.reverse(players);
 
         //printStandings();
+
+        timesInPlayoff.get(players.get(0)).incrementSupportersShield();
 
         for (int i = 0; i < PLAYOFF_SPOTS; i++) {
             timesInPlayoff.get(players.get(i)).incrementTimesInPlayoff();

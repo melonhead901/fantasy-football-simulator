@@ -28,8 +28,8 @@ class League {
     }
 
     public static League createLeague() {
-        Player kellen = Player.generatePlayer("Kellen", 10, 1564, 19.22);
-        Player riley = Player.generatePlayer("Riley", 10, 1542, 25.28);
+        Player kellen = Player.generatePlayer("Kellen", 10, 1542, 19.22);
+        Player riley = Player.generatePlayer("Riley", 10, 1564, 25.28);
         Player kyle = Player.generatePlayer("Kyle", 7, 1337, 21.93);
         Player jordan = Player.generatePlayer("Jordan", 6, 1291, 16.91);
         Player alex = Player.generatePlayer("Alex", 5, 1339, 25.04);
